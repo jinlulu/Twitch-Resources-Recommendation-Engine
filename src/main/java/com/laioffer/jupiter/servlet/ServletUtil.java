@@ -15,6 +15,8 @@ public class ServletUtil {
         response.getWriter().print(new ObjectMapper().writeValueAsString(itemMap));
     }
 
+    // handle password encryption
+    // password 需要加密处理
     public static String encryptPassword(String userId, String password) throws IOException {
         return DigestUtils.md5Hex(userId + DigestUtils.md5Hex(password)).toLowerCase();
     }
