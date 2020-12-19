@@ -17,8 +17,9 @@ import java.io.IOException;
 @WebServlet(name = "LoginServlet", urlPatterns = {"/login"}) //added urlPatterns = {"/login"}
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        LoginRequestBody body = mapper.readValue(request.getReader(), LoginRequestBody.class);
+        //ObjectMapper mapper = new ObjectMapper();
+        //LoginRequestBody body = mapper.readValue(request.getReader(), LoginRequestBody.class);
+        LoginRequestBody body = ServletUtil.readRequestBody(LoginRequestBody.class, request);
         if (body == null) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
@@ -43,6 +44,7 @@ public class LoginServlet extends HttpServlet {
 
             LoginResponseBody loginResponseBody = new LoginResponseBody(body.getUserId(), username);
             response.setContentType("application/json;charset=UTF-8");
+            ObjectMapper mapper = new ObjectMapper();
             mapper.writeValue(response.getWriter(), loginResponseBody);
         } else {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
