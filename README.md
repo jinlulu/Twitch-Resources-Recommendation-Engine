@@ -1,3 +1,3 @@
 # Twitch-Resources-Recommendation-Engine
 
-[Twitch+](http://54.197.35.95/)
+This is a link to the project webpage [Twitch+](http://54.197.35.95/).
